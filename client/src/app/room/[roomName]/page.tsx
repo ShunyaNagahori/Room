@@ -6,7 +6,7 @@ import Messages from '@/app/components/Messages';
 import { messageType } from '@/type/message.type';
 
 export default function page() {
-  const SERVER_URL = 'http://localhost:8000';
+  const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL!;
   const socket = io(SERVER_URL, {
     withCredentials: true
   });
@@ -46,7 +46,7 @@ export default function page() {
 
 
   return (
-    <main className="w-1/2 mx-auto my-5">
+    <main className="mx-auto p-5">
       <div>
         <div className="bg-lime-300">
           <h1 className="flex items-center justify-center text-lg py-2">{roomName}</h1>
