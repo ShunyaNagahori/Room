@@ -1,11 +1,19 @@
+const dotenv = require('dotenv');
 const express = require('express');
 const { createServer } = require('node:http');
 const { Server } = require('socket.io');
-const PORT = 8000;
+const PORT = parseInt(process.env.PORT) || 8000;
+
+
+if (process.env.NODE_ENV === 'development') {
+  dotenv.config({ path: '.env.development' });
+} else if (process.env.NODE_ENV === 'production') {
+  dotenv.config({ path: '.env.production' });
+}
 
 const app = express();
 const server = createServer(app);
-const CLIENT_URL = 'http://localhost:3000';
+const CLIENT_URL = process.env.CLIENT_URL;
 const corsOptions = {
   origin: [CLIENT_URL],
   credentials: true
