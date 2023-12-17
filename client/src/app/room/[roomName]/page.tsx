@@ -5,7 +5,7 @@ import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import Messages from '@/app/components/Messages';
 import { messageType } from '@/type/message.type';
 
-export default function page() {
+export default function Page() {
   const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL!;
   const socket = io(SERVER_URL, {
     withCredentials: true
